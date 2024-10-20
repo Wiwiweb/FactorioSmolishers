@@ -1,4 +1,4 @@
--- From space-age's enemy.lua:
+-- From space-age's enemies.lua:
 
 -- function make_demolisher(base_name, order, scale, damage_multiplier, health, regen, speed_multiplier, factoriopedia_simulation, sounds)
 -- function make_demolisher_segment_specifications(base_name, demolisher_segment_scales, scale)
@@ -37,4 +37,6 @@ for base_name, prototype in pairs(data.raw["segmented-unit"]) do
   local this_demolisher_stats = demolisher_stats[base_name] or demolisher_stats["small-demolisher"]
   data:extend(make_demolisher_segments(base_name, {tail_scale}, this_demolisher_stats.scale, this_demolisher_stats.damage_multiplier, this_demolisher_stats.health, this_demolisher_stats.sounds))
   prototype.segment_engine.segments = make_demolisher_segment_specifications(base_name, {tail_scale}, this_demolisher_stats.scale)
+  prototype.enraged_speed = prototype.enraged_speed * 3
+  prototype.acceleration_rate = prototype.acceleration_rate * 1000000
 end
